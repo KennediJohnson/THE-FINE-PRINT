@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fine Print — Kennedi Johnson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=block" rel="stylesheet">
+<style>
+/* VOICE: a polished law-school portfolio with the calm of a fashion editorial — professional first.
+   IDEA: a magazine issue called The Fine Print: cover, profile, three features, back cover.
+   PICTURE: the real screenshots of each tool, framed like magazine photographs.
+   COLOUR and TYPE: burgundy, espresso brown, cream, beige, white, hunter green for links, a touch of burnt orange;
+   Bodoni Moda (upright) for every heading, Source Serif 4 for reading text.
+   LAYOUT: one section per printed page; grids stack to a single column on phones. */
+:root{
+  color-scheme:light;
+  --burgundy:#5E1820; --wine:#7A2430; --espresso:#2B1A13; --brown:#5B3A29; --tan:#A9876A;
+  --beige:#DCC8A8; --cream:#F3EADB; --paper:#FBF7F0; --white:#FFFFFF;
+  --green:#2F4F3A; --green-lt:#B9CDB8; --orange:#B0521F; --ink:#24160F;
+  --head:'Bodoni Moda', Didot, 'Times New Roman', serif;
+  --text:'Source Serif 4', Georgia, serif;
+}
+*{box-sizing:border-box;min-width:0;margin:0;padding:0}
+html{font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-padding-top:64px}
+body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:1.125rem;line-height:1.6;overflow-x:clip}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+/* shared type — every heading uses the same face, upright */
+h1,h2,h3,.mast,.big{font-family:var(--head);font-style:normal;font-weight:600;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(2.3rem,4.6vw,3.4rem);letter-spacing:-.01em}
+h3{font-size:1.45rem;font-weight:700;margin:0 0 .35rem}
+p + p{margin-top:.7rem}
+.label{font-family:var(--text);font-weight:600;font-size:1rem;letter-spacing:.02em}
+.lede{font-size:1.3rem;line-height:1.45;margin-top:.8rem;max-width:40rem}
+.sec{margin-bottom:1.6rem}
+.sec:last-child{margin-bottom:0}
+
+/* navigation (screen only) */
+nav{position:sticky;top:0;z-index:10;background:var(--espresso);color:var(--cream)}
+nav .row{display:flex;gap:.4rem 1.6rem;flex-wrap:wrap;align-items:center;max-width:1240px;margin:0 auto;padding:.7rem max(5vw,16px)}
+nav b{font-family:var(--head);font-weight:700;font-size:1.15rem;margin-right:auto;letter-spacing:.04em}
+nav a{text-decoration:none;font-size:1rem;padding:.35rem 0}
+nav a:hover{text-decoration:underline;text-underline-offset:4px}
+
+.page{position:relative;padding:clamp(40px,6vw,80px) max(5vw,16px)}
+.inner{max-width:1240px;margin:0 auto}
+.folio{display:none}
+
+/* links as buttons — hunter green throughout */
+.links{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:.55rem 1.1rem;background:var(--green);color:var(--white);text-decoration:none;font-weight:600;font-size:1rem;border-radius:2px}
+.btn:hover,.btn:focus-visible{background:#243d2d;outline:2px solid var(--green-lt);outline-offset:2px}
+.btn small{font-weight:400;opacity:.85;font-size:.9rem}
+
+/* framed figures */
+figure{background:var(--white);padding:10px;border:1px solid var(--tan);box-shadow:0 18px 40px rgba(43,26,19,.18)}
+figure .crop{overflow:hidden}
+figcaption{font-size:.95rem;line-height:1.4;margin-top:.6rem;color:var(--brown)}
+figcaption b{color:var(--ink)}
+
+/* ============ COVER ============ */
+.cover{background:var(--burgundy);color:var(--cream)}
+.cover .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid rgba(243,234,219,.45);padding-bottom:.7rem;font-size:1rem}
+.cover .mast{font-size:clamp(3.4rem,11.5vw,9rem);font-weight:500;line-height:.9;letter-spacing:-.02em;margin:1.4rem 0 .4rem;color:var(--white)}
+.cover .sub{font-family:var(--head);font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:500;border-top:1px solid rgba(243,234,219,.45);border-bottom:1px solid rgba(243,234,219,.45);padding:.7rem 0}
+.cover .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(24px,4vw,56px);margin-top:2rem;align-items:start}
+.cover .toc a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem 1rem;padding:.9rem 0;border-bottom:1px solid rgba(243,234,219,.3);text-decoration:none}
+.cover .toc a:first-child{padding-top:0}
+.cover .toc strong{font-family:var(--head);font-size:1.5rem;font-weight:600;color:var(--white)}
+.cover .toc span{grid-column:1;color:var(--beige);font-size:1.05rem;line-height:1.4}
+.cover .toc em{font-style:normal;grid-row:1;grid-column:2;color:var(--beige);font-size:1rem;align-self:center}
+.cover .card{background:var(--cream);color:var(--ink);padding:clamp(22px,3vw,36px)}
+.cover .card .label{color:var(--wine)}
+.cover .card h1{font-size:clamp(2.6rem,6vw,4.4rem);color:var(--burgundy);margin:.3rem 0 1.1rem}
+.cover .meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;border-top:2px solid var(--burgundy);padding-top:.9rem}
+.cover .meta div{font-size:1.02rem;line-height:1.35}
+.cover .meta b{display:block;color:var(--green);font-size:.95rem;margin-bottom:.2rem}
+
+/* ============ PROFILE ============ */
+.profile{background:var(--paper)}
+.profile .grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(28px,4vw,60px)}
+.profile h1{font-size:clamp(2.6rem,5.5vw,4rem);color:var(--burgundy)}
+.profile .facts{display:flex;flex-wrap:wrap;gap:.3rem 1.4rem;margin:.8rem 0 1.6rem;padding:.8rem 0;border-top:2px solid var(--burgundy);border-bottom:1px solid var(--tan);font-size:1.05rem}
+.profile h3{color:var(--burgundy)}
+.profile .contents{background:var(--green);color:var(--cream);padding:clamp(24px,3vw,36px)}
+.profile .contents h2{font-size:2rem;color:var(--white);margin-bottom:.6rem}
+.profile .contents a{display:block;text-decoration:none;padding:.9rem 0;border-top:1px solid rgba(243,234,219,.35)}
+.profile .contents .label{color:var(--green-lt)}
+.profile .contents strong{display:block;font-family:var(--head);font-weight:600;font-size:1.45rem;color:var(--white);line-height:1.15;margin:.15rem 0}
+.profile .contents span{font-size:1.05rem;line-height:1.4}
+
+/* ============ ENTRY FRAME (shared) ============ */
+.entry-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;padding-bottom:.7rem;margin-bottom:1.6rem;border-bottom:2px solid currentColor}
+.entry-head .label{font-size:1.05rem}
+.split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,4vw,60px);align-items:start}
+.cols2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem clamp(24px,3vw,44px)}
+.part-b{padding-top:0}
+
+/* Entry 1 — newspaper: paper ground, burgundy rules */
+.e1{background:var(--paper);color:var(--ink)}
+.e1 .entry-head{color:var(--burgundy)}
+.e1 h2,.e1 h3{color:var(--burgundy)}
+.e1 .lede{color:var(--brown)}
+.brief{background:var(--white);border:1px solid var(--ink);padding:1.2rem 1.3rem}
+.brief .mh{font-family:var(--head);font-weight:700;font-size:1.6rem;text-align:center;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding:.4rem 0;line-height:1.1}
+.brief .dl{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;font-size:.92rem;padding:.4rem 0;border-bottom:1px solid var(--ink);margin-bottom:.6rem}
+.brief ol{list-style:none;counter-reset:d}
+.brief li{counter-increment:d;display:grid;grid-template-columns:2rem minmax(0,1fr);padding:.45rem 0;border-bottom:1px solid var(--beige);font-size:1.05rem;line-height:1.35}
+.brief li::before{content:counter(d);font-family:var(--head);font-weight:700;color:var(--wine)}
+.brief .unv{margin-top:.8rem;border:1.5px dashed var(--wine);padding:.6rem .8rem;font-size:1rem;line-height:1.4}
+.brief .unv b{color:var(--wine)}
+.note{background:var(--burgundy);color:var(--cream);padding:1.3rem 1.4rem}
+.e1 .note h3{color:var(--white)}
+
+/* Entry 2 — espresso ground, cream text */
+.e2{background:var(--espresso);color:var(--cream)}
+.e2 .entry-head{color:var(--beige)}
+.e2 h2{color:var(--white)}
+.e2 h3{color:var(--beige)}
+.e2 .lede{color:var(--beige)}
+.e2 figure{background:var(--cream);border-color:var(--brown);box-shadow:none}
+.e2 figcaption{color:var(--brown)}
+.e2 .crop.form{max-height:640px}
+.e2 .shows{background:var(--wine);padding:1.3rem 1.4rem}
+.e2 .shows h3{color:var(--white)}
+
+/* Entry 3 — beige ground, burnt orange accent */
+.e3{background:var(--beige);color:var(--ink)}
+.e3 .entry-head{color:var(--orange)}
+.e3 h2{color:var(--burgundy)}
+.e3 h3{color:var(--orange)}
+.e3 .lede{color:var(--brown)}
+.phones{display:flex;justify-content:center}
+.phone{background:#151010;border-radius:28px;padding:7px;width:min(240px,60%);box-shadow:0 18px 36px rgba(43,26,19,.3)}
+.phone img{border-radius:22px;width:100%}
+.e3 .print-frame{width:min(380px,100%);margin:0 auto}
+.e3 .cap-row{display:flex;justify-content:center;margin-top:.8rem}
+.e3 .cap-row figcaption{max-width:16rem;text-align:center}
+
+/* ============ BACK ============ */
+.back{background:var(--burgundy);color:var(--cream)}
+.back .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,4vw,60px);align-items:end}
+.back .big{font-size:clamp(3rem,8vw,6rem);font-weight:500;color:var(--white);line-height:.98}
+.back p{font-size:1.25rem;line-height:1.5;margin-top:1.2rem;max-width:34rem}
+.back .card{background:var(--cream);color:var(--ink);padding:1.6rem}
+.back .card h3{font-size:1.9rem;color:var(--burgundy);margin-bottom:.6rem}
+.back .row{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:.8rem;padding:.55rem 0;border-top:1px solid var(--tan);font-size:1.02rem}
+.back .row b{color:var(--green)}
+.back .row span{overflow-wrap:anywhere}
+
+/* ============ PHONES / TABLETS ============ */
+@media screen and (max-width:820px){
+  .cover .grid,.profile .grid,.split,.back .grid{grid-template-columns:minmax(0,1fr)}
+}
+@media screen and (max-width:600px){
+  body{font-size:1.0625rem}
+  .cols2{grid-template-columns:minmax(0,1fr)}
+  .cover .meta{grid-template-columns:minmax(0,1fr)}
+  nav{position:static}
+  nav b{width:100%}
+  nav .row{gap:.1rem 1.1rem}
+  .e2 .crop.form{max-height:460px}
+}
+
+/* ============ PRINT: one section = one 11 × 8.5 in page ============ */
+@page{size:11in 8.5in;margin:0}
+@media print{
+  html{font-size:12pt}
+  body{font-size:1.15rem;line-height:1.48}
+  nav{display:none}
+  .page{width:11in;height:8.5in;overflow:hidden;padding:.6in .6in .75in;break-after:page;page-break-after:always}
+  .inner{max-width:none;height:100%}
+  .part-b{padding-top:.6in}
+  .folio{display:flex;justify-content:space-between;position:absolute;left:.6in;right:.6in;bottom:.32in;font-size:.95rem;opacity:.85}
+  h2{font-size:3.2rem}
+  .cover .mast{font-size:7.6rem}
+  figure{box-shadow:none}
+  .e2 .crop.form,.e2 .crop.res{max-height:5.4in}
+  .phone{width:2.3in}
+  .e3 .print-frame{width:3.6in}
+  .btn{min-height:0;padding:.4rem .8rem}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections"><div class="row">
+  <b>THE FINE PRINT</b>
+  <a href="#profile">Profile</a>
+  <a href="#dispatch">The Dispatch</a>
+  <a href="#red-flag">Red Flag Translator</a>
+  <a href="#worth-it">Worth It?</a>
+  <a href="#contact">Contact</a>
+</div></nav>
+
+<!-- ============ 1 · COVER ============ -->
+<section class="page cover" id="top"><div class="inner">
+  <div class="top"><span>Issue No. 1 · Fall 2026</span><span>Howard University School of Law</span></div>
+  <div class="mast">THE FINE PRINT</div>
+  <div class="sub">The AI portfolio of Kennedi Johnson</div>
+  <div class="grid">
+    <div class="toc">
+      <a href="#dispatch"><strong>The Dispatch</strong><em>Page 3</em><span>A daily briefing on AI regulation.</span></a>
+      <a href="#red-flag"><strong>Red Flag Translator</strong><em>Page 5</em><span>An AI tool for reviewing contracts.</span></a>
+      <a href="#worth-it"><strong>Worth It?</strong><em>Page 7</em><span>A consumer app that scores purchases.</span></a>
+    </div>
+    <div class="card">
+      <div class="label">The AI portfolio of</div>
+      <h1>Kennedi Johnson</h1>
+      <div class="meta">
+        <div><b>School</b>Howard University School of Law</div>
+        <div><b>Class</b>J.D. Candidate, Class of 2027</div>
+        <div><b>Practice</b>Regulatory, compliance and privacy law</div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>The Fine Print · Kennedi Johnson</span><span>1 / 9</span></div>
+</div></section>
+
+<!-- ============ 2 · PROFILE + CONTENTS ============ -->
+<section class="page profile" id="profile"><div class="inner">
+  <div class="grid">
+    <div>
+      <div class="label" style="color:var(--wine)">Profile</div>
+      <h1>Kennedi Johnson</h1>
+      <div class="facts">
+        <span>Howard University School of Law</span>
+        <span>J.D. Candidate, Class of 2027</span>
+        <span><a href="mailto:Johnsonkennedi1432@gmail.com">Johnsonkennedi1432@gmail.com</a></span>
+      </div>
+      <div class="sec">
+        <h3>Focus</h3>
+        <p>I am pursuing regulatory, compliance and privacy law. I plan to begin my career at a midsize firm and eventually serve at a government agency.</p>
+      </div>
+      <div class="sec">
+        <h3>How I use AI</h3>
+        <p>Today, I use AI to work more efficiently. It checks my grammar, helps me verify facts, outlines documents, finds news in regulatory and privacy law, and turns my notes into outlines, quizzes and flashcards. When I start practicing, I look forward to handing it the tasks that take up the most time: organizing files and deadlines, sorting through emails, collecting sources and preparing documents for review. That leaves more of my time for the work that needs a lawyer. I do not use AI to draft memoranda or motion briefs, and I never let it replace my own legal judgment.</p>
+      </div>
+    </div>
+    <div class="contents">
+      <h2>Contents</h2>
+      <a href="#dispatch"><span class="label">Entry 1 · Page 3</span><strong>The Kennedi Johnson Dispatch</strong><span>A daily briefing on AI regulation, privacy and corporate risk.</span></a>
+      <a href="#red-flag"><span class="label">Entry 2 · Page 5</span><strong>Red Flag Translator</strong><span>An AI tool that flags risky clauses in contracts.</span></a>
+      <a href="#worth-it"><span class="label">Entry 3 · Page 7</span><strong>Worth It?</strong><span>A consumer app that scores whether a purchase is worth it.</span></a>
+    </div>
+  </div>
+  <div class="folio"><span>The Fine Print · Kennedi Johnson</span><span>2 / 9</span></div>
+</div></section>
+
+<!-- ============ 3 · ENTRY 1 (a) ============ -->
+<section class="page e1" id="dispatch"><div class="inner">
+  <div class="entry-head"><span class="label">Entry 1 of 3</span><span class="label">Research and current awareness</span></div>
+  <div class="split">
+    <div>
+      <h2>The Kennedi Johnson Dispatch</h2>
+      <p class="lede">A daily newsletter that keeps me current on AI regulation in the legal and tech fields.</p>
+      <div class="sec" style="margin-top:1.4rem"><h3>The problem</h3><p>Regulatory lawyers need to follow how AI is developing worldwide and the risks it creates when it goes unchecked. I realized I had underestimated how powerful AI is becoming and how concerned people around the world are about it.</p></div>
+      <div class="sec"><h3>What I built</h3><p>A daily briefing covering four areas, drawn from the FTC, the SEC and the Federal Register. It covers the past year and reports news from outside the United States, especially China.</p></div>
+      <div class="links"><a class="btn" href="https://claude.ai/artifact/FT8k1brWHZqPCojE42KivL">Read the Dispatch <small>↗</small></a></div>
+    </div>
+    <div>
+      <figure>
+        <img src="assets/dispatch.png" alt="The Kennedi Johnson Dispatch front page for November 24, 2026">
+        <figcaption><b>Figure 1.</b> The front page of the Dispatch for Nov. 24, 2026.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="folio"><span>The Fine Print · Entry 1</span><span>3 / 9</span></div>
+</div></section>
+
+<!-- ============ 4 · ENTRY 1 (b) ============ -->
+<section class="page e1 part-b"><div class="inner">
+  <div class="split">
+    <div class="cols2">
+      <div class="sec"><h3>How I tested it</h3><p>I ran seven daily briefings. Each delivered about ten articles and cases with source links, plus a list of sources it could not verify.</p></div>
+      <div class="sec"><h3>What I changed</h3><p>I limited coverage to the past year, except for pivotal cases, and sorted the news by country and city. The 10/5 briefing followed both rules.</p></div>
+      <div class="sec"><h3>Limits and supervision</h3><p>Some items in the unverified list were hallucinated. I search every title and check each link’s date, source and content.</p></div>
+      <div class="sec"><h3>What this shows</h3><p>I am detail-oriented and creative. I built verification into the tool and shaped the briefing around my practice area.</p></div>
+    </div>
+    <div>
+      <div class="note">
+        <h3>Revision note</h3>
+        <p>I took ChatGPT’s advice to name exact topics and set a rolling one-year window. I rejected its advice to change the article count, because ten accurate cases a day was already working.</p>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://claude.ai/artifact/FT8k1brWHZqPCojE42KivL">Read the Dispatch <small>↗</small></a>
+        <a class="btn" href="https://chatgpt.com/share/6ac3ca23-8a28-83ea-908a-2cbae1a3b586">Revision conversation <small>ChatGPT ↗</small></a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>The Fine Print · Entry 1</span><span>4 / 9</span></div>
+</div></section>
+
+<!-- ============ 5 · ENTRY 2 (a) ============ -->
+<section class="page e2" id="red-flag"><div class="inner">
+  <div class="entry-head"><span class="label">Entry 2 of 3</span><span class="label">Contract review</span></div>
+  <div class="split">
+    <div>
+      <h2>Red Flag Translator</h2>
+      <p class="lede">An AI tool that reviews leases, contracts and service agreements and flags risky or inaccurate clauses.</p>
+      <div class="sec" style="margin-top:1.4rem"><h3>The problem</h3><p>Attorneys may rely on the tool alone. It can overstate a risk or miss one, so an attorney still has to read the contract and check every flagged clause.</p></div>
+      <div class="sec"><h3>What I built</h3><p>Users upload an agreement and share their side: their role, state and concerns. The tool explains each risky clause in plain English, ranks it from high to low, and scores the contract’s overall risk out of 100.</p></div>
+      <div class="links"><a class="btn" href="https://claude.ai/artifact/3tYMVtxM8EeLaVWV9Vfa2m">Open the Red Flag Translator <small>↗</small></a></div>
+    </div>
+    <figure>
+      <div class="crop form"><img src="assets/rf_form.png" alt="Red Flag Translator: governance card and upload form"></div>
+      <figcaption><b>Figure 2.</b> The governance card and upload form.</figcaption>
+    </figure>
+  </div>
+  <div class="folio"><span>The Fine Print · Entry 2</span><span>5 / 9</span></div>
+</div></section>
+
+<!-- ============ 6 · ENTRY 2 (b) ============ -->
+<section class="page e2 part-b"><div class="inner">
+  <div class="split">
+    <div>
+      <div class="cols2">
+        <div class="sec"><h3>How I tested it</h3><p>I ran six different scenarios and reviewed every red flag the tool found.</p></div>
+        <div class="sec"><h3>What I changed</h3><p>I added notes to every review: get changes in writing, a governance note, and the points an attorney must verify.</p></div>
+      </div>
+      <div class="sec" style="margin-top:1.4rem"><h3>Limits and supervision</h3><p>Some sources may be inaccurate, and the tool is overly cautious. An attorney must verify each risk and read the whole contract.</p></div>
+      <div class="shows"><h3>What this shows</h3><p>AI can point an attorney to where to look. It cannot replace the attorney’s own reading of the contract.</p></div>
+    </div>
+    <figure>
+      <div class="crop res"><img src="assets/rf_results.png" alt="Red Flag Translator results for a fictional lease"></div>
+      <figcaption><b>Figure 3.</b> Results for a fictional lease: risk level, “get it in writing,” and a flagged clause.</figcaption>
+    </figure>
+  </div>
+  <div class="folio"><span>The Fine Print · Entry 2</span><span>6 / 9</span></div>
+</div></section>
+
+<!-- ============ 7 · ENTRY 3 (a) ============ -->
+<section class="page e3" id="worth-it"><div class="inner">
+  <div class="entry-head"><span class="label">Entry 3 of 3</span><span class="label">Consumer app</span></div>
+  <div class="split">
+    <div>
+      <h2>Worth It?</h2>
+      <p class="lede">A consumer app that helps you decide whether a purchase or experience is worth the money.</p>
+      <div class="sec" style="margin-top:1.4rem"><h3>The problem</h3><p>To stay accurate, the app needs regular design changes and updates that keep up with the products being reviewed.</p></div>
+      <div class="sec"><h3>What I built</h3><p>Users post photos of products, restaurants, clothes, books or trips, and others comment with their experiences. The app asks how much the item matters to you, your price range and how often you would use it. Then it gives a score out of 100.</p></div>
+    </div>
+    <div>
+      <div class="phones"><div class="phone"><img src="assets/wi_home.png" alt="Worth It? installed on a phone home screen"></div></div>
+      <div class="cap-row"><figcaption><b>Figure 4.</b> Worth It? installed on my phone.</figcaption></div>
+    </div>
+  </div>
+  <div class="folio"><span>The Fine Print · Entry 3</span><span>7 / 9</span></div>
+</div></section>
+
+<!-- ============ 8 · ENTRY 3 (b) ============ -->
+<section class="page e3 part-b"><div class="inner">
+  <div class="split">
+    <div class="cols2">
+      <div class="sec"><h3>How I tested it</h3><p>I tested the app on my phone and in my internet browser. Every day, I uploaded a post about a product or restaurant I was interested in trying.</p></div>
+      <div class="sec"><h3>What I changed</h3><p>I redesigned the interface several times and added private chats between users.</p></div>
+      <div class="sec"><h3>Limits and supervision</h3><p>The app needs regular updates to keep giving accurate feedback on products. To make any change, I have to ask the system for it and then upload the new files into the app myself. Because of that, I have to check that the app stays up to date and that the information it gives is correct.</p></div>
+      <div class="sec"><h3>What this shows</h3><p>AI tools adapt to what you envision, which leaves room to build creative ideas around your own interests.</p></div>
+    </div>
+    <figure class="print-frame"><img src="assets/wi_app.png" alt="Worth It? home screen with the Regret Test and monthly budget"><figcaption><b>Figure 5.</b> The home screen: the Regret Test, a monthly budget and community reviews.</figcaption></figure>
+  </div>
+  <div class="folio"><span>The Fine Print · Entry 3</span><span>8 / 9</span></div>
+</div></section>
+
+<!-- ============ 9 · BACK ============ -->
+<section class="page back" id="contact"><div class="inner">
+  <div class="grid">
+    <div>
+      <div class="big">Always read the fine print.</div>
+      <p>I built each of these projects with AI and checked each one myself: every source searched, every link opened, every flag read against the actual clause.</p>
+    </div>
+    <div class="card">
+      <h3>Kennedi Johnson</h3>
+      <div class="row"><b>School</b><span>Howard University School of Law</span></div>
+      <div class="row"><b>Class</b><span>J.D. Candidate, 2027</span></div>
+      <div class="row"><b>Focus</b><span>Regulatory, compliance and privacy law</span></div>
+      <div class="row"><b>Email</b><span><a href="mailto:Johnsonkennedi1432@gmail.com">Johnsonkennedi1432@gmail.com</a></span></div>
+    </div>
+  </div>
+  <div class="folio"><span>The Fine Print · Kennedi Johnson</span><span>9 / 9</span></div>
+</div></section>
+
+</body>
+</html>
